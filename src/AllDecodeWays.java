@@ -22,6 +22,7 @@ class AllDecodeWays {
             return;
         }
         int number = input.charAt(index) - '0';
+        // number 1-9
         if(number >=1 && number <= 9){
             char curr = (char)(number - 1 + 'A');
             sb.append(curr);
@@ -29,9 +30,11 @@ class AllDecodeWays {
             sb.deleteCharAt(sb.length()-1);
         }
 
+        // two digits cases
         if(index+1<input.length()){
+            // check the number
             number = (input.charAt(index) - '0') * 10 + (input.charAt(index+1) - '0');
-            if(number >= 10 && number < 26){
+            if(number >= 10 && number <= 26){
                 char curr = (char)(number - 1 + 'A');
                 sb.append(curr);
                 dfs(res, input,sb,index+2);
@@ -45,7 +48,7 @@ class AllDecodeWays {
 class decodeWays{
     public static void main(String[] args){
         AllDecodeWays s = new AllDecodeWays();
-        List<String> res = s.decode("1121");
+        List<String> res = s.decode("2621");
         System.out.println(res);
     }
 }
